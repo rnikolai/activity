@@ -1,0 +1,1 @@
+pythonw "%~dp0auto_commit.py"
