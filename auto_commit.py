@@ -2,10 +2,10 @@ import os
 import subprocess
 from datetime import datetime
 
-# Path to this repository folder
-repo_path = os.path.dirname(os.path.abspath(__file__))
+# Path to the repository folder
+repo_path = r"C:\activity_log"
 
-# File to update
+# File to update with the timestamp
 file_path = os.path.join(repo_path, "logfile.txt")
 
 # Update the text file with the current date
@@ -13,13 +13,10 @@ current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 with open(file_path, "a") as f:
     f.write(f"System started at: {current_date}\n")
 
-# Change directory to the repo
+# Change to the repository directory
 os.chdir(repo_path)
 
-# Git commands
-try:
-    subprocess.run(["git", "add", "."], check=True)
-    subprocess.run(["git", "commit", "-m", f"System start log: {current_date}"], check=True)
-    subprocess.run(["git", "push", "origin", "main"], check=True)
-except subprocess.CalledProcessError as e:
-    print(f"Error during Git operations: {e}")
+# Run Git commands
+subprocess.run(["git", "add", "."], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["git", "commit", "-m", f"System start log: {current_date}"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["git", "push", "origin", "main"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
