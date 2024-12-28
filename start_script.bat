@@ -1,1 +1,1 @@
-pythonw "%~dp0auto_commit.py"
+pythonw "%~dp0auto_commit.pyw"
